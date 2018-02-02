@@ -49,6 +49,11 @@ impl Image {
 
 
     // Get the color of a pixel
+    pub fn get_pixel<'a>(&'a self, x: u32, y: u32) -> Option<&'a Color> {
+        self.buffer.get((x + y * self.width) as usize)
+    }
+
+    // Get the color of a pixel
     pub fn get_pixel_mut<'a>(&'a mut self, x: u32, y: u32) -> Option<&'a mut Color> {
         self.buffer.get_mut((x + y * self.width) as usize)
     }

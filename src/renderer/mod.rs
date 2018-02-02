@@ -66,12 +66,10 @@ impl Renderer {
 
                     for sx in 0..samples {
                         for sy in 0..samples {
-                            let point = Point::new(
-                                x as f64 + sx as f64 / samples as f64,
-                                y as f64 + sy as f64 / samples as f64,
-                            );
+                            let img_x = x * samples + sx;
+                            let img_y = y * samples + sy;
 
-                            if let Some(color) = path.get_color(point) {
+                            if let Some(color) = colormap.get_pixel(img_x, img_y) {
                                 average.r += color.r;
                                 average.g += color.g;
                                 average.b += color.b;
